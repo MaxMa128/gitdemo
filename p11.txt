@@ -1,0 +1,62 @@
+program sda;
+const n=50;m=9;
+  var a:array[1..n,1..m] of char;
+      x:array[1..n,1..m] of char;
+      o,b,y,z,c,i,j:integer;
+      x1,y1,q,e,u,r:integer;
+      v:boolean;
+      ch:char;
+begin
+  v:=true;
+ for i:=1 to n do
+  begin
+   for j:=1 to m do
+    begin
+      read(a[i,j]);
+      if (a[i,j]=' ') or (a[i,j]='.') then 
+         begin z:=i;y:=j-1;
+               break 
+         end;
+     end;
+       if a[z,y]='z' then   
+           begin 
+            o:=y; 
+             while o>1 do
+             begin
+              ch:=a[z,o];
+              o:=o-1;
+              if (pred(ch))<>a[z,o] then 
+                begin v:=false;break;end;
+              end;
+            end
+            else v:=false;
+    
+
+          if v=true then
+            for c:=1 to y do 
+             x[z,c]:=a[z,c] 
+          else v:=true;
+         if (a[i,j]='.') then begin q:=i;break;end;
+  end;
+
+  for i:=1 to n do
+  begin
+  e:=0;
+  for j:=1 to m do
+  begin
+  if x[i,j]=a[q,j] then begin e:=e+1;end;
+  end; if e=8 then for u:=1 to 8 do x[i,u]:=' '
+  end;
+
+  for i:=1 to n do
+  begin
+  for j:=1 to m do
+  begin
+    if (x[i,j]>='a') and (x[i,j]<='z') then  begin e:=0;write(x[i,j]);end;
+  end;
+  if e=0 then begin writeln; e:=1; end;
+  end;
+
+readln;
+readln;
+end.
